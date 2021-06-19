@@ -80,6 +80,15 @@ button.block {
 }
 
 /* Header */
+header a {
+  color: #ffffff;
+  padding: 1rem;
+}
+a.brand {
+  color: #ffffff;
+  font-size: 3rem;
+  font-weight: bold;
+}
 .row {
   display: flex;
   flex-wrap: wrap;
@@ -144,26 +153,4 @@ img.large {
 }
 .error {
   color: #a02020;
-}
-/*form signin*/
-.form {
-  max-width: 60rem;
-  margin: 0 auto;
-}
-.form > div {
-  display: flex;
-  flex-direction: column;
-  margin: 1rem;
-}
-.form label {
-  margin: 1rem 0;
-  display: block;
-}
-.form input{
-  line-height: 300%;
-}
-.form h3{
-  text-decoration: underline;
-  text-decoration-color: #494b49 ;
-  
 }
