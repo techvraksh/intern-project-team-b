@@ -1,36 +1,37 @@
-import React ,{useState} from "react";
+import React,{useState} from "react";
 import styled from "styled-components";
  
 const Navbar = () => {
-    const [isOpen,setIsOpen] = useState(false);
+    const [isOpen, setIsOpen] = useState(false);
     return(
         <Nav>
             <Logo href="">
                 TechV<span>raksh</span>
             </Logo>
-            <div onClick={() => setIsOpen(isOpen)}>
+            <Hamburger onClick= {() => setIsOpen(!isOpen)}>
                 <span />
                 <span />
                 <span />
-            </div>
+            </Hamburger>
             <Menu isOpen={isOpen}>
                 <MenuLink href="">Contact Us</MenuLink>
                 <MenuLink href="">About</MenuLink>
-                <MenuLink href="">Cart</MenuLink>
-                <MenuLink href="">Notifications</MenuLink>
+                <MenuLink href="">Cart(0)</MenuLink>
+                <MenuLink href=""><button>Sign Up</button></MenuLink>
             </Menu>
         </Nav>
     );
 };
 
-const div = styled.div`
+const Hamburger = styled.div`
 display: none;
-flex-direction: coloumn;
+flex-direction: column;
+padding: 30px;
 cursor: pointer;
 
 span{
     hieght:2px;
-    width:25px;
+    width:20px;
     backgrund:#7b7fda;
     margin-bottom: 4px;
     border-radius: 5px;
@@ -40,7 +41,7 @@ span{
 }
 `;
 
-const MenuLink = styled.div`
+const MenuLink = styled.a`
 padding: 1rem 2rem;
 curse: pointer;
 text-align:center;
@@ -52,6 +53,16 @@ font-size:0.9rem;
 &:hover{
     color: #7b7fda;
 }
+button {
+    width:65px;
+    height: 30px;
+    background-color: #67bc98;
+    color: white;
+    border-radius:5px;
+    &:hover {
+        background-color:#7b7fda
+    }
+  }
 `;
 
 const Nav = styled.div`
@@ -61,22 +72,18 @@ justify-contact: space-between;
 align-item: center;
 flex-wrap: wrap;
 background: white;
-position: absolute;
-top: 0;
-left: 0;
-right: 0;
 `;
 
 const Logo = styled.a`
-padding : 1rem 0;
+padding : 1rem 1rem;
 color: #7b7fda ;
 text-decoration: none;
 font-weight: 800;
 font-size:1.7rem;
 
 span{
-    font-weight: 300;
-    font-size: 1.3rem;
+    font-weight: 400;
+    font-size: 1.4rem;
 }
 `;
 
@@ -88,7 +95,7 @@ position: relative;
 
 @media(max-width: 768px){
     overflow: hidden ;
-    flex-direction: coloumn;
+    flex-direction: column;
     width: 100%;
     max-height: ${({ isOpen }) => (isOpen ? "300px":"0")};
     transition: max-height 0.3s ease-in;
