@@ -58,6 +58,8 @@ ul {
 li {
   margin-top: 1rem;
 }
+input, 
+select, textarea,
 button {
   padding: 1rem;
   border-radius: 0.5rem;
@@ -66,9 +68,16 @@ button {
   font-family: Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+
+}
+
+button{
   background-color: #f8f8f8;
   cursor: pointer;
 }
+input:hover, 
+select:hover, 
+textarea:hover,
 button:hover {
   border: 0.1rem #404040 solid;
 }
@@ -181,4 +190,19 @@ img.large {
   text-decoration: underline;
   text-decoration-color: #494b49 ;
   
+}
+
+
+/*checkout*/
+
+.checkout-steps > div {
+  border-top: 0.3rem #c0c0c0 solid;
+  color: #c0c0c0;
+  flex: 1;
+  padding: 1rem;
+  font-weight: bold;
+}
+.checkout-steps > div.active {
+  border-top-color: #f08000;
+  color: #f08000;
 }
