@@ -63,7 +63,7 @@ render(){
                     
                     <div className="cart-checkout">
                       <div>
-                        <p>SUBTOTAL</p>mm
+                        <p>SUBTOTAL</p>
                         <p>${totalAmount}</p>
                       </div>
                       <button onClick={() => alert('Total amount is: $ '+ {totalAmount})}>CHECKOUT</button>
