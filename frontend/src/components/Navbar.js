@@ -1,12 +1,15 @@
 import React,{useState} from "react";
 import styled from "styled-components";
- 
-const Navbar = () => {
+import { CartIcon } from "../icons/index";
+
+const Navbar = (props) => {
+    
     const [isOpen, setIsOpen] = useState(false);
+
     return(
         <Nav>
-            <Logo href="">
-                TechV<span>raksh</span>
+            <Logo href="/">
+                <img src="/image/TechVraksh.jpg" alt=""></img> TechV<span>raksh</span>
             </Logo>
             <Hamburger onClick= {() => setIsOpen(!isOpen)}>
                 <span />
@@ -14,92 +17,102 @@ const Navbar = () => {
                 <span />
             </Hamburger>
             <Menu isOpen={isOpen}>
-                <MenuLink href="">Contact Us</MenuLink>
-                <MenuLink href="">About</MenuLink>
-                <MenuLink href="">Cart(0)</MenuLink>
-                <MenuLink href=""><button>Sign Up</button></MenuLink>
+                <MenuLink href="/"><button>Home</button></MenuLink>
+                <MenuLink href="/about"><button>About</button></MenuLink>
+                <MenuLink href="/signin"><button>SignUp</button></MenuLink>
+                <MenuLink href="/cart"><button><CartIcon></CartIcon>Cart({props.totalQuantity})</button></MenuLink>
             </Menu>
         </Nav>
     );
-};
-
+      };
+    
 const Hamburger = styled.div`
 display: none;
 flex-direction: column;
-padding: 30px;
+padding: 2rem 1.8rem;
 cursor: pointer;
 
 span{
-    hieght:2px;
-    width:20px;
-    backgrund:#7b7fda;
+    height: 2px;
+    width: 20px;
+    background:#7b7fda;
     margin-bottom: 4px;
     border-radius: 5px;
 }
-@media(max-width: 768px){
-    display: flex;
+
+@media (max-width: 768px)
+{
+   display: flex;
 }
 `;
 
 const MenuLink = styled.a`
-padding: 1rem 2rem;
-curse: pointer;
-text-align:center;
-text-decoration: none;
-color: #67bc98;
-transition: all 0.3s ease-in;
-font-size:0.9rem;
+ padding: 0rem 0rem;
+ cursor: pointer;
+ text-align: center;
+ diaplay: inline-block:
+ text-decoration: none;
+ color: black;
+ transition: all 0.3s ease-in;
+ font-size: 1.4rem;
 
-&:hover{
-    color: #7b7fda;
-}
-button {
-    width:65px;
-    height: 30px;
-    background-color: #67bc98;
-    color: white;
-    border-radius:5px;
+ button {
+    width: 100px;
+    height: 40px;
+    background-color: rgb(92,233,233);
+    color: black; 
+    border-color: rgb(92,233,233);
     &:hover {
-        background-color:#7b7fda
+        background-color: white;
+        border-color: rgb(72,72,72)
     }
+  }
+  svg{
+      width: 20px;
+      margin-right:5px;
+      display: align-left;
+
   }
 `;
 
 const Nav = styled.div`
-padding : 0 2 rem;
-display : flex;
-justify-contact: space-between;
-align-item: center;
-flex-wrap: wrap;
-background: white;
+padding : 0 rem;
+display: flex;
+height: 5rem;
+justify-content: space-between;
+align-item:center;
+flex-wrap: wrap ;
+background: rgb(92,233,233);
 `;
 
 const Logo = styled.a`
-padding : 1rem 1rem;
-color: #7b7fda ;
-text-decoration: none;
+padding: 1.01rem 1rem;
+color: black;
+text-decoration:none;
 font-weight: 800;
-font-size:1.7rem;
-
+font-size: 2.5rem;
+img{
+width:20px;
+}
 span{
-    font-weight: 400;
-    font-size: 1.4rem;
+font-weight:600;
+font-size: 2rem;
 }
 `;
-
 const Menu = styled.div`
 display: flex;
-justify-content: sapce-between;
-align-item: center;
+justify-content: space-between;
+align-items: center;
 position: relative;
 
-@media(max-width: 768px){
-    overflow: hidden ;
+@media (max-width: 768px)
+{
+    overflow: hidden;
     flex-direction: column;
     width: 100%;
     max-height: ${({ isOpen }) => (isOpen ? "300px":"0")};
     transition: max-height 0.3s ease-in;
 }
 `;
-
 export default Navbar;
+
