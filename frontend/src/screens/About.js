@@ -1,5 +1,5 @@
 import React from 'react';
-import { GitHubIcon } from '../icons/index';
+import { GitHubIcon } from '../icons';
 
 const About = () => {
     
