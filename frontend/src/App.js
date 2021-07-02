@@ -6,7 +6,7 @@ import SigninScreen from './screens/SigninScreen';
 import Navbar from "./components/Navbar";
 import About from "./screens/About";
 import CartScreen from "./screens/CartScreen";
-import ShippingAddressScreen from "./screens/ShippingAdressScreen";
+import ShippingAddressScreen from "./screens/ShippingAddressScreen";
 
 class App extends React.Component {
   constructor () {
