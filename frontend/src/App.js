@@ -41,7 +41,7 @@ class App extends React.Component {
   
    incrementQuantity = (_id) => {
     this.setState((prevState) => {
-      let updatedCartItems = prevState.cartitems.map((p) => {
+      let updatedCartItems = prevState.cartItems.map((p) => {
         if(p._id === _id) {
           return{
             ...p,
@@ -57,7 +57,7 @@ class App extends React.Component {
    };
    decrementQuantity = (_id) => {
     this.setState((prevState) => {
-      let updatedCartItems = prevState.cartitems.map((p) => {
+      let updatedCartItems = prevState.cartItems.map((p) => {
         if(p._id === _id) {
           return{
             ...p,
@@ -73,7 +73,7 @@ class App extends React.Component {
    };
    deleteItem = (_id) => {
     this.setState((prevState) => {
-      let updatedCartItems = prevState.cartitems.filter((p) => {
+      let updatedCartItems = prevState.cartItems.filter((p) => {
         return p._id !== _id
       });
       return{
