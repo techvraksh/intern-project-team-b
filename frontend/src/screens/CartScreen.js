@@ -13,7 +13,7 @@ close =() =>{this.setState({ isOpen: false})};
 open = () =>{this.setState({isOpen: true})};
 render(){
   const { isOpen } =this.state;
-  let totalQuantity = this.props.cartIitems.reduce((acc, cv) => {
+  let totalQuantity = this.props.cartItems.reduce((acc, cv) => {
     acc=acc+cv.quantity;
     return acc;
   },0)
@@ -27,11 +27,11 @@ render(){
  
   return (
     <main>
-      <section>
+       <section>
         <aside className="cart">
           <div onClick={this.close} className="close-btn">
             x
-           </div> 
+          </div> 
             <div className="cart-body">
               <div className="cart-heading">
                 <div className="cart-icon">
@@ -46,13 +46,13 @@ render(){
                 </div>
                 <h1>Cart{totalQuantity}</h1>
                 <h6>this is the cart page</h6>
-              </div>
+             </div>
           </div>
-        </aside>
+       </aside>
       </section>
       <section>
                 <div >
-                    {this.props.cartIitems.map((item) => (
+                    {this.props.cartItems.map((item) => (
                       <CartItem 
                       {...item}
                       incrementQuantity={this.props.incrementQuantity}
