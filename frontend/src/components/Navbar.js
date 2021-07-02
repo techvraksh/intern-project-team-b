@@ -1,6 +1,6 @@
 import React,{useState} from "react";
 import styled from "styled-components";
-import { CartIcon } from "../icons/index";
+import { CartIcon } from "../icons";
 
 const Navbar = (props) => {
     
