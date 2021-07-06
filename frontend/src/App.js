@@ -80,7 +80,7 @@ class App extends React.Component {
         cartItems: updatedCartItems,
       };
     });
-   };
+    };
 render() {
   return (
     <BrowserRouter>
