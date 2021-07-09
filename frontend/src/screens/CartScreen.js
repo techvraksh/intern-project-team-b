@@ -1,95 +1,72 @@
 import React from "react";
-import CartItem from "../components/CartItem";
-
-class CartScreen extends React.Component {
-  constructor(props){
-    super(props)
-  this.state ={
-    isOpen: false,
-  };
-}
-
-close =() =>{this.setState({ isOpen: false})};
-open = () =>{this.setState({isOpen: true})};
-render(){
-  const { isOpen } =this.state;
-  let totalQuantity = this.props.cartItems.reduce((acc, cv) => {
-    acc=acc+cv.quantity;
-    return acc;
-  },0)
-  let totalAmount = this.props.cartItems.reduce((acc, cv) => {
-    acc=acc+cv.price * cv.quantity;
-    return acc;
-  },0)
-  if(!isOpen) {
-    return <ClosedCart open={this.open} totalQuantity={totalQuantity} />
-  }
- 
-  return (
-    <main>
-       <section>
-        <aside className="cart">
-          <div onClick={this.close} className="close-btn">
-            x
-          </div> 
-            <div className="cart-body">
-              <div className="cart-heading">
-                <div className="cart-icon">
-                  <svg
-                    xmlns="https://www.w3.org/2000/svg"
-                    fill="none"
-                    viewBox="0 0 24 24"
-                    stroke="currentColor"
-                    className="icon"
-                    >
-                  </svg>
-                </div>
-                <h1>Cart{totalQuantity}</h1>
-                <h6>this is the cart page</h6>
-             </div>
-          </div>
-       </aside>
-      </section>
-      <section>
-                <div >
-                    {this.props.cartItems.map((item) => (
-                      <CartItem 
-                      {...item}
-                      incrementQuantity={this.props.incrementQuantity}
-                      decrementQuantity={this.props.decrementQuantity}
-                      deleteItem={this.props.deleteItem}
-                      />
-                    ))}
-                    
-                    <div className="cart-checkout">
-                      <div>
-                        <p>SUBTOTAL</p>
-                        <p>${totalAmount}</p>
-                      </div>
-                      <button onClick={() => alert('Total amount is: $ '+ {totalAmount})}>CHECKOUT</button>
-                    </div>
-                </div>
-      </section>
-    </main>
-  );
-}
-};
-function ClosedCart(props) {
+import { useCart } from "react-use-cart";
+import "../styles.css";
+const CartScreen = () => {
+  const { 
+          isEmpty, 
+          items,
+          totalUniqueItems,
+          totalItems,
+          cartTotal,
+          updateItemQuantity,
+          removeItem,
+          emptyCart,
+        } = useCart();
+        if(isEmpty) return <h1 className="p1">Your Cart is Empty</h1>
   return(
-    <div className="close-cart">
-      <span onClick={props.open} className="open-btn">
-        <div className="cart-icon">
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            fill="none"
-            stroke="currentColor"
-            className="icon"
-          >
-          </svg>
-                <h1>Cart{props.totalQuantity}</h1>
-        </div>
-      </span>
-    </div>
-  )
-}
+    <section className="p2">
+      <div className="p3">
+         <div className="col-12">
+              <h1 className="p4">Cart({totalItems}) </h1>
+              <h5 className="p5">This is your cart page</h5>
+              <table className="p6">
+                <tbody>
+                      <tr>
+                        <th>Image</th>
+                        <th>Products({totalUniqueItems})</th>
+                        <th>Piece Price</th>
+                        <th>Quantity</th>
+                        <th>Total Price</th>
+                        <th>---------------</th>
+                      </tr>
+                  {items.map((product) => {
+                    return(
+                      <tr key={product.id}>
+                        <td>
+                            <img src={product.image} style={{height: '6rem'}} alt={product.name} />
+                        </td>
+                        <td>{product.name}</td>
+                        <td>${product.price}</td>
+                        <td>{product.quantity}</td>
+                        <td>$ ({product.price}*{product.quantity})</td>
+                        <td>
+                          <button
+                          onClick={() => updateItemQuantity(product.id,product.quantity-1 )}>-</button>
+                          <button
+                          onClick={() => updateItemQuantity(product.id,product.quantity+1 )}>+</button>
+                          <button 
+                          onClick={() => removeItem(product.id )}>remove</button>
+                        </td>
+                      </tr>
+                    )})}
+                      <tr>
+                          <td></td>
+                          <td></td>
+                          <td></td>
+                          <td>Net Total:</td>
+                          <td> $ {cartTotal}</td>
+                          <td>
+                              <button
+                              onClick={() => emptyCart()}>Clear Cart
+                              </button>
+                              <a href="/Shipping"><button>Check Out</button></a>
+                          </td>
+                      </tr>
+                </tbody>
+              </table>
+         </div>
+      </div>
+    </section>
+  );
+};
 export default CartScreen;
