@@ -5,6 +5,7 @@ import LoadingBox from '../components/LoadingBox';
 import MessageBox from '../components/MessageBox';
 import React, { useEffect, useState } from 'react';
 import { detailsProduct } from '../actions/productActions';
+import { useCart } from 'react-use-cart';
 
 export default function ProductScreen(props) {
   const dispatch = useDispatch();
@@ -12,14 +13,11 @@ export default function ProductScreen(props) {
   const {qty,setQty} = useState(1);
   const productDetails = useSelector(state => state.productDetails);
   const { loading, error, product } = productDetails;
-
+  const { addItem } = useCart();
+  
   useEffect(() => {
     dispatch(detailsProduct(productId));
   }, [dispatch, productId]);
-
-  const addToCartHandler = () => {
-    props.history.push(`/cart/${productId}?qty=${qty}`);
-  };
   
   return (
     <div>
@@ -101,9 +99,9 @@ export default function ProductScreen(props) {
                           </div>
                         </div>
                       </li>
-                      <li>
+                     <li key={product.id}>
                         <button
-                          onClick={props.addToCartHandler(props)}
+                          onClick={() => addItem(product,1)}
                           className="primary block"
                         >
                           Add to Cart
