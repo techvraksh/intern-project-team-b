@@ -1,11 +1,12 @@
 import React,{useState} from "react";
+import { useCart } from "react-use-cart";
 import styled from "styled-components";
 import { CartIcon } from "../icons";
 
 const Navbar = (props) => {
     
     const [isOpen, setIsOpen] = useState(false);
-
+    const { totalItems } = useCart();
     return(
         <Nav>
             <Logo href="/">
@@ -20,12 +21,12 @@ const Navbar = (props) => {
                 <MenuLink href="/"><button>Home</button></MenuLink>
                 <MenuLink href="/about"><button>About</button></MenuLink>
                 <MenuLink href="/signin"><button>SignUp</button></MenuLink>
-                <MenuLink href="/cart"><button><CartIcon></CartIcon>Cart({props.totalQuantity})</button></MenuLink>
+                <MenuLink href="/cart"><button><CartIcon></CartIcon>Cart({totalItems})</button></MenuLink>
             </Menu>
         </Nav>
     );
       };
-    
+ 
 const Hamburger = styled.div`
 display: none;
 flex-direction: column;
@@ -60,10 +61,10 @@ const MenuLink = styled.a`
     width: 100px;
     height: 40px;
     background-color: rgb(92,233,233);
-    color: black; 
+    color: black;
     border-color: rgb(92,233,233);
     &:hover {
-        background-color: white;
+        background-color: rgb(255, 253, 151);
         border-color: rgb(72,72,72)
     }
   }
@@ -115,4 +116,5 @@ position: relative;
 }
 `;
 export default Navbar;
+
 
