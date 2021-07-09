@@ -1,7 +1,7 @@
 const data = {
     products: [
       {
-        _id: '1',
+        id: '1',
         name: 'Nike Slim T-Shirt',
         category: 'T-Shirts',
         image: '/image/1st.jpg',
@@ -13,7 +13,7 @@ const data = {
         description: 'high quality product',
       },
       {
-        _id: '2',
+        id: '2',
         name: 'Adidas Fit T-Shirt',
         category: 'T-Shirts',
         image: '/image/2nd.jpg',
@@ -25,7 +25,7 @@ const data = {
         description: 'high quality product',
       },
       {
-        _id: '3',
+        id: '3',
         name: 'Lacoste T-Shirt',
         category: 'T-Shirts',
         image: '/image/3rd.jpg',
@@ -37,7 +37,7 @@ const data = {
         description: 'high quality product',
       },
       {
-        _id: '4',
+        id: '4',
         name: 'Nike T-shirt',
         category: 'T-Shirts',
         image: '/image/4th.jpg',
@@ -49,7 +49,7 @@ const data = {
         description: 'high quality product',
       },
       {
-        _id: '5',
+        id: '5',
         name: 'Puma Graphic T-shirt',
         category: 'T-Shirts',
         image: '/image/5th.jpg',
@@ -61,7 +61,7 @@ const data = {
         description: 'high quality product',
       },
       {
-        _id: '6',
+        id: '6',
         name: 'Adidas Fit T-Shirt',
         category: 'T-Shirts',
         image: '/image/6th.jpg',
